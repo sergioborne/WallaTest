@@ -1,26 +1,120 @@
 apply plugin: 'com.android.application'
+// Apply Dagger 2 plugin
+apply plugin: 'com.neenbedankt.android-apt'
+apply plugin: "me.tatarka.retrolambda"
 
 android {
-    compileSdkVersion 24
-    buildToolsVersion "24.0.0"
+  compileSdkVersion sdkVersion
+  buildToolsVersion buildToolVersion
 
-    defaultConfig {
-        applicationId "com.sergioborne.wallatest"
-        minSdkVersion 19
-        targetSdkVersion 24
-        versionCode 1
-        versionName "1.0"
+  defaultConfig {
+    applicationId "com.sergioborne.wallatest"
+    minSdkVersion minimumSdkVersion
+    targetSdkVersion sdkVersion
+    versionCode defaultVersionCode
+    versionName defaultVersionName
+
+    testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+  }
+  buildTypes {
+    release {
+      minifyEnabled false
+      proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
     }
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
-    }
+  }
+
+  compileOptions {
+    sourceCompatibility JavaVersion.VERSION_1_8
+    targetCompatibility JavaVersion.VERSION_1_8
+  }
+
+  testOptions {
+    unitTests.returnDefaultValues = true
+  }
+}
+
+retrolambda {
+  jvmArgs "-noverify"
+}
+
+configurations.all {
+  resolutionStrategy {
+    force "com.android.support:support-annotations:$appCompatVersion"
+    force "com.android.support:recyclerview-v7:$appCompatVersion"
+  }
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:24.0.0'
+  compile fileTree(dir: 'libs', include: ['*.jar'])
+
+  compile "com.android.support:appcompat-v7:$appCompatVersion"
+  compile "com.android.support:design:$appCompatVersion"
+  compile "com.android.support:cardview-v7:$appCompatVersion"
+  compile "com.android.support:support-v4:$appCompatVersion"
+  compile "com.android.support:recyclerview-v7:$appCompatVersion"
+
+  //AndroidAnnotations
+  apt "org.androidannotations:androidannotations:$AAVersion"
+  compile "org.androidannotations:androidannotations-api:$AAVersion"
+
+  //GSON
+  compile "com.google.code.gson:gson:$gsonVersion"
+
+  //RETROFIT
+  compile "com.squareup.okhttp3:okhttp:$okHttpVersion"
+  compile "com.squareup.retrofit2:retrofit:$retrofitVersion"
+  compile "com.squareup.okhttp3:logging-interceptor:$okHttpVersion"
+  compile "com.squareup.retrofit2:adapter-rxjava:$retrofitVersion"
+
+  compile "com.squareup.retrofit2:converter-gson:$retrofitVersion"
+
+  // JAVA 8 Stream
+  compile 'com.annimon:stream:1.0.9'
+
+  // RxJava
+  compile "io.reactivex:rxjava:$rxJavaVersion"
+  compile "io.reactivex:rxandroid:$rxAndroidVersion"
+
+  //Dagger 2
+  apt "com.google.dagger:dagger-compiler:$daggerVersion"
+  compile "com.google.dagger:dagger:$daggerVersion"
+  compile "javax.annotation:jsr250-api:$jsr250Version"
+
+  //Fresco
+  //Discarded. No good support for activity transitions shared elements
+  //compile "com.facebook.fresco:fresco:$frescoVersion"
+
+  //Picasso
+  compile "com.squareup.picasso:picasso:$picassoVersion"
+
+  //LoganSquare
+  apt "com.bluelinelabs:logansquare-compiler:$logansquareVersion"
+  compile "com.bluelinelabs:logansquare:$logansquareVersion"
+  compile "com.github.aurae.retrofit2:converter-logansquare:$logansquareRetrofitConverterVersion"
+
+  //TESTING
+  testCompile "junit:junit:4.12"
+  //TEST Mockito
+  testCompile "org.mockito:mockito-core:2.0.53-beta"
+  //TEST DAGGER
+  testApt "com.google.dagger:dagger-compiler:$daggerVersion"
+  testCompile "com.google.dagger:dagger:$daggerVersion"
+  testCompile "javax.annotation:jsr250-api:$jsr250Version"
+  //Test AndroidAnnotations
+  testApt "org.androidannotations:androidannotations:$AAVersion"
+  testCompile "org.androidannotations:androidannotations-api:$AAVersion"
+  //AssertJ
+  testCompile 'com.squareup.assertj:assertj-android:1.1.1'
+
+  androidTestCompile 'com.android.support.test:runner:0.4'
+  androidTestCompile 'com.android.support.test:rules:0.4'
+  //Espresso
+  androidTestCompile 'com.android.support.test.espresso:espresso-core:2.2.1'
+
+
+
+  androidTestCompile('com.android.support.test.espresso:espresso-contrib:2.2.1') {
+    exclude group: 'com.android.support', module: 'appcompat'
+    exclude group: 'com.android.support', module: 'support-v4'
+  }
 }

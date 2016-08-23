@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">WallaTest</string>
+  <string name="app_name">WallaTest</string>
+  <string name="title_list_list">Items</string>
+  <string name="title_list_detail">List Detail</string>
 </resources>
