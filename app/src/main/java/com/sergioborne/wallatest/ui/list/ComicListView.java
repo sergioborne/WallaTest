@@ -1,11 +1,9 @@
 package com.sergioborne.wallatest.ui.list;
 
+import com.sergioborne.wallatest.app.base.View;
 import com.sergioborne.wallatest.domain.model.Comic;
 
-/**
- * Created by sergio.cores on 14/08/2016.
- */
-public interface ComicListView {
+public interface ComicListView extends View{
 
   void showComic(Comic comic);
 

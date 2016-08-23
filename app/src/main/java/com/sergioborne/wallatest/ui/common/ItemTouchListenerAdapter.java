@@ -7,8 +7,6 @@ import android.view.MotionEvent;
 import android.view.View;
 
 /**
- * Created by sergio.cores on 16/08/2016.
- *
  * As RecyclerView does not have standard way to add click listeners to the
  * items, this RecyclerView.OnNoteTouchListener intercepts touch events and
  * translates them to simple onItemClick and onItemLongClick callbacks.

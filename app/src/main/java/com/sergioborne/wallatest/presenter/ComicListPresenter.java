@@ -8,9 +8,6 @@ import com.sergioborne.wallatest.ui.list.ComicListView;
 import java.util.List;
 import rx.Subscriber;
 
-/**
- * Created by sergio.cores on 14/08/2016.
- */
 public class ComicListPresenter extends Presenter {
 
   private static final String TAG = ComicListPresenter.class.getSimpleName();

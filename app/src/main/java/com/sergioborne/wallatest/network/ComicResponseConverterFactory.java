@@ -10,9 +10,6 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-/**
- * Created by sergio.cores on 13/08/2016.
- */
 public class ComicResponseConverterFactory extends Converter.Factory{
   private GsonConverterFactory factory;
 

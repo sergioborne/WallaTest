@@ -22,7 +22,7 @@ import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EFragment;
 import org.androidannotations.annotations.ViewById;
 
-@EFragment(R.layout.comic_list) public class ComicListFragment extends Fragment
+@EFragment(R.layout.comic_list_fragment) public class ComicListFragment extends Fragment
     implements ComicListView, SwipeRefreshLayout.OnRefreshListener {
 
   private final static String TAG = ComicListFragment.class.getSimpleName();

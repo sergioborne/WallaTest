@@ -34,7 +34,7 @@
         class="com.sergioborne.wallatest.ui.list.ComicListFragment_"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:layout="@layout/comic_list"
+        tools:layout="@layout/comic_list_fragment"
         />
   </FrameLayout>
 

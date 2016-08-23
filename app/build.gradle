@@ -87,11 +87,6 @@ dependencies {
   //Picasso
   compile "com.squareup.picasso:picasso:$picassoVersion"
 
-  //LoganSquare
-  apt "com.bluelinelabs:logansquare-compiler:$logansquareVersion"
-  compile "com.bluelinelabs:logansquare:$logansquareVersion"
-  compile "com.github.aurae.retrofit2:converter-logansquare:$logansquareRetrofitConverterVersion"
-
   //TESTING
   testCompile "junit:junit:4.12"
   //TEST Mockito

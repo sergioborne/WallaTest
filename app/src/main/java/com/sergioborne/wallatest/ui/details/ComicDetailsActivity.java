@@ -20,7 +20,6 @@ import org.androidannotations.annotations.ViewById;
 
 @EActivity(R.layout.comic_details_activity) public class ComicDetailsActivity extends BaseActivity {
 
-
   @ViewById(R.id.toolbar_layout) CollapsingToolbarLayout collapsingToolbarLayout;
   @ViewById(R.id.app_bar) AppBarLayout appBarLayout;
   @ViewById(R.id.detail_toolbar) Toolbar toolbar;
